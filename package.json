@@ -1,9 +1,12 @@
 {
+  "type": "module",
   "name": "final-project-server-app",
   "version": "1.0.0",
+  "description": "Node.js, HTTP Web server for the Kanbas application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node App.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,11 @@
     "url": "https://github.com/PetoriousBIG/final-project-server-app/issues"
   },
   "homepage": "https://github.com/PetoriousBIG/final-project-server-app#readme",
-  "description": ""
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.5.1"
+  }
 }
