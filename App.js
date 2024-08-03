@@ -3,6 +3,7 @@ import express from 'express';
 import session from "express-session";
 import mongoose from 'mongoose';
 import UserRoutes from "./Users/routes.js";
+import RecipeRoutes from "./Recipes/routes.js";
 import cors from "cors";
 
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/final-project"
@@ -36,5 +37,6 @@ app.use(
 
 app.use(express.json());
 UserRoutes(app);
+RecipeRoutes(app);
 
 app.listen(process.env.PORT || 4000);
