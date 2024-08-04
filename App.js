@@ -3,6 +3,7 @@ import express from 'express';
 import session from "express-session";
 import mongoose from 'mongoose';
 import UserRoutes from "./Users/routes.js";
+import RestaurantRoutes from "./Restaurants/routes.js";
 import RecipeRoutes from "./Recipes/routes.js";
 import cors from "cors";
 
@@ -37,6 +38,5 @@ app.use(
 
 app.use(express.json());
 UserRoutes(app);
-RecipeRoutes(app);
 
 app.listen(process.env.PORT || 4000);
