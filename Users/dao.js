@@ -4,7 +4,7 @@ let currentUser =  null;
 export const createUser = (user) => {
     delete user._id;
     return model.create(user);  
-}
+};
 
 export const findAllUsers = () => model.find();
 export const findUsersByRole = (role) => model.find({ role: role})
