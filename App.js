@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import UserRoutes from "./Users/routes.js";
 import RestaurantRoutes from "./Restaurants/routes.js";
 import cors from "cors";
+import ReviewRoutes from "./Reviews/routes.js";
 
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/final-project"
 mongoose.connect(CONNECTION_STRING);
@@ -38,5 +39,6 @@ app.use(
 app.use(express.json());
 UserRoutes(app);
 RestaurantRoutes(app);
+ReviewRoutes(app);
 
 app.listen(process.env.PORT || 4000);
