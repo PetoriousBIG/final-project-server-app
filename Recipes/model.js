@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import RecipeSchema from './schema.js';
+import CommentSchema from './schema.js';
 
-const RecipeModel = mongoose.model('Recipe', RecipeSchema);
+const CommentModel = mongoose.model('Comment', CommentSchema);
 
-export default RecipeModel;
+export default CommentModel;

@@ -54,12 +54,26 @@ export const createComment = async (commentData) => {
 };
 
 export const getCommentsByRecipeId = async (recipeId) => {
+  try {
+    const comments = await Comment.find({ recipeId }).sort({ createdAt: -1 });
+    return comments;
+  } catch (error) {
+    console.error('Error fetching comments from database:', error);
+    throw error;
+  }
+};
+
+  export const getCommentsWithReplies = async (recipeId) => {
     try {
-      const comments = await Comment.find({ recipeId }).sort({ createdAt: -1 });
-      console.log(`Found ${comments.length} comments for recipe ${recipeId}`);
+      const comments = await Comment.find({ recipeId, parentCommentId: null })
+        .sort({ createdAt: -1 })
+        .populate({
+          path: 'replies',
+          options: { sort: { createdAt: 1 } }
+        });
       return comments;
     } catch (error) {
-      console.error('Error fetching comments from database:', error);
+      console.error('Error fetching comments with replies:', error);
       throw error;
     }
   };
