@@ -7,6 +7,7 @@ import RestaurantRoutes from "./Restaurants/routes.js";
 import cors from "cors";
 import ReviewRoutes from "./Reviews/routes.js";
 import MenuItemRoutes from "./MenuItems/routes.js";
+import RecipeRoutes from "./Recipes/routes.js";
 
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/final-project"
 mongoose.connect(CONNECTION_STRING);
@@ -42,5 +43,6 @@ UserRoutes(app);
 RestaurantRoutes(app);
 ReviewRoutes(app);
 MenuItemRoutes(app);
+RecipeRoutes(app);
 
 app.listen(process.env.PORT || 4000);
