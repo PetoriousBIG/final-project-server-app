@@ -6,6 +6,7 @@ const restaurantSchema = new mongoose.Schema({
         owner_id: {type: String, required: true},
         owner: String,
         introduction: String,
+        chef_ids: [String],
         images: [String]
     },
     { collection: "restaurants" }

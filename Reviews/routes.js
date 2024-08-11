@@ -1,3 +1,4 @@
+import { connect } from "mongoose";
 import * as dao from "./dao.js";
 export default function ReviewRoutes(app) {
 
@@ -26,8 +27,10 @@ export default function ReviewRoutes(app) {
     }
     app.get("/api/reviews/:reviewId", findReviewById);
 
-    const findAllRestaurants = async (req, res) => {
+    const findAllReviews = async (req, res) => {
         const {content_type, content_id, recent} = req.query;
+        console.log(content_type)
+        console.log(content_id)
         if (recent) {
             const reviews = await dao.findRecentReviews();
             res.json(reviews);
@@ -35,6 +38,7 @@ export default function ReviewRoutes(app) {
         }
         if (content_type && content_id) {
             const reviews = await dao.findReviewsByContent(content_type, content_id);
+            console.log(reviews)
             res.json(reviews);
             return;
         } 
@@ -42,5 +46,5 @@ export default function ReviewRoutes(app) {
         res.json(reviews)
         return;
     }
-    app.get("/api/reviews", findAllRestaurants);
+    app.get("/api/reviews", findAllReviews);
 }

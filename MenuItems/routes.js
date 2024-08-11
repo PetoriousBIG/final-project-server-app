@@ -11,7 +11,7 @@ export default function MenuItemRoutes(app) {
         const status = await dao.deleteMenuItem(req.params.menuItemId);
         res.json(status);
     }
-    app.delete("/api/menu-items/:menuItemId", deleteMenuItem);
+    app.delete("/api/menu-items/:iid", deleteMenuItem);
 
     const findAllMenuItems = async (req, res) => {
         const { restaurant_id, chef_id } = req.query;
@@ -21,7 +21,6 @@ export default function MenuItemRoutes(app) {
             return;
         }
         if (chef_id) {
-            const menuItems = await dao.findMenuItemsForChef(chef_id);
             res.json(menuItems);
             return;
         }
@@ -35,12 +34,12 @@ export default function MenuItemRoutes(app) {
         const menuItem = await dao.findMenuItemById(req.params.menuItemId);
         res.json(menuItem);
     }
-    app.get("/api/menu-items/:menuItemId", findMenuItemById);
+    app.get("/api/menu-items/:iid", findMenuItemById);
 
     const updateMenuItem = async (req, res) => {
         const {menuItemId} = req.params;
         const status = await dao.updateMenuItem(menuItemId, req.body);
         res.json(status);
     };
-    app.put("/api/menu-items/:menuItemId", updateMenuItem);
+    app.put("/api/menu-items/:iid", updateMenuItem);
 }
