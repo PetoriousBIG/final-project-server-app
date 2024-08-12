@@ -6,8 +6,7 @@ const menuItemSchema = new mongoose.Schema({
         price: Number,
         chef_id: {type: String, required: true},
         chef_name: {type: String, required: true},
-        chefs_intro: String,
-        images: [String]
+        chefs_intro: String
     },
     { collection: "menu-items" }
 );

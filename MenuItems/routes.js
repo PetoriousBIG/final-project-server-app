@@ -8,7 +8,7 @@ export default function MenuItemRoutes(app) {
     app.post("/api/menu-items", createMenuItem);
 
     const deleteMenuItem = async (req, res) => {
-        const status = await dao.deleteMenuItem(req.params.menuItemId);
+        const status = await dao.deleteMenuItem(req.params.iid);
         res.json(status);
     }
     app.delete("/api/menu-items/:iid", deleteMenuItem);
@@ -31,7 +31,7 @@ export default function MenuItemRoutes(app) {
     app.get("/api/menu-items", findAllMenuItems);
 
     const findMenuItemById = async (req, res) => {
-        const menuItem = await dao.findMenuItemById(req.params.menuItemId);
+        const menuItem = await dao.findMenuItemById(req.params.iid);
         res.json(menuItem);
     }
     app.get("/api/menu-items/:iid", findMenuItemById);
