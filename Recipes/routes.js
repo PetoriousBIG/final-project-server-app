@@ -81,6 +81,20 @@ const RecipeRoutes = (app) => {
       
     }
   });
+
+    // route for user-specific comments
+    app.get("/api/users/:userId/comments", async (req, res) => {
+        try {
+          const userId = req.params.userId;
+          const comments = await Comment.find({ userId })
+            .sort({ createdAt: -1 });
+    
+          res.json(comments);
+        } catch (error) {
+          console.error('Error fetching user comments:', error);
+          res.status(500).json({ error: 'An error occurred while fetching user comments' });
+        }
+      });
 };
 
 export default RecipeRoutes;
