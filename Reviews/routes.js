@@ -6,7 +6,7 @@ export default function ReviewRoutes(app) {
         const review = await dao.createReview(req.body);
         res.json(review);
     };
-    app.post("api/reviews", createReview);
+    app.post("/api/reviews", createReview);
 
     const deleteReview = async (req, res) => {
         const status = await dao.deleteReview(req.params.reviewId);
@@ -29,8 +29,6 @@ export default function ReviewRoutes(app) {
 
     const findAllReviews = async (req, res) => {
         const {content_type, content_id, recent} = req.query;
-        console.log(content_type)
-        console.log(content_id)
         if (recent) {
             const reviews = await dao.findRecentReviews();
             res.json(reviews);
@@ -38,7 +36,6 @@ export default function ReviewRoutes(app) {
         }
         if (content_type && content_id) {
             const reviews = await dao.findReviewsByContent(content_type, content_id);
-            console.log(reviews)
             res.json(reviews);
             return;
         } 
