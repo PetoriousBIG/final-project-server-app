@@ -37,8 +37,8 @@ export default function MenuItemRoutes(app) {
     app.get("/api/menu-items/:iid", findMenuItemById);
 
     const updateMenuItem = async (req, res) => {
-        const {menuItemId} = req.params;
-        const status = await dao.updateMenuItem(menuItemId, req.body);
+        const {iid} = req.params;
+        const status = await dao.updateMenuItem(iid, req.body);
         res.json(status);
     };
     app.put("/api/menu-items/:iid", updateMenuItem);
